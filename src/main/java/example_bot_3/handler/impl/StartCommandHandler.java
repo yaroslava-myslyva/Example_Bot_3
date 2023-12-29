@@ -1,8 +1,11 @@
 package example_bot_3.handler.impl;
 
+import example_bot_3.ExampleBot;
+import example_bot_3.constant.Constants;
 import example_bot_3.handler.UserRequestHandler;
 import example_bot_3.helper.KeyboardHelper;
 import example_bot_3.model.UserRequest;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import example_bot_3.service.TelegramService;
@@ -29,8 +32,9 @@ public class StartCommandHandler extends UserRequestHandler {
     @Override
     public void handle(UserRequest request) {
         ReplyKeyboard replyKeyboard = keyboardHelper.buildMainMenu();
+
         telegramService.sendMessage(request.getChatId(),
-                "\uD83D\uDC4BПривет!",
+                "\uD83D\uDC4BЗдравствуйте, " + Constants.USERNAME + "!",
                 replyKeyboard);
     }
 

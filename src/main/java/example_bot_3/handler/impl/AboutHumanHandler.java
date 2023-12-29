@@ -52,8 +52,6 @@ public class AboutHumanHandler extends UserRequestHandler {
         int oldPoints = userSession.getPoints();
         userSession.setPoints(oldPoints + points);
         userSession.setAnswerAboutColor(points);
-        System.out.println("oldPoints " + oldPoints);
-        System.out.println("points " + points);
         userSession.setState(ConversationState.WAITING_FOR_HUMAN_3);
         userSessionService.saveSession(userSession.getChatId(), userSession);
     }

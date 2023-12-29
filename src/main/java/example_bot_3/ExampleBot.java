@@ -1,5 +1,6 @@
 package example_bot_3;
 
+import example_bot_3.constant.Constants;
 import lombok.extern.slf4j.Slf4j;
 import example_bot_3.model.UserRequest;
 import example_bot_3.model.UserSession;
@@ -39,6 +40,7 @@ public class ExampleBot extends TelegramLongPollingBot {
 
             Long userId = update.getMessage().getFrom().getId();
             String userFirstName = update.getMessage().getFrom().getFirstName();
+            Constants.USERNAME = userFirstName;
 
             log.info("[{}, {}] : {}", userId, userFirstName, textFromUser);
 

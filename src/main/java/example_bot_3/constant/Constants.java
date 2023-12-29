@@ -14,4 +14,6 @@ public class Constants {
     public static final String GINGER_IMAGE = "src/main/resources/cat_ginger.png";
     public static final String BLACK_TEXT = "Поздравляем! Вы – черный кот. Воплощение крутости и классности)";
     public static final String BLACK_IMAGE = "src/main/resources/cat_black.png";
+
+    public static String USERNAME;
 }

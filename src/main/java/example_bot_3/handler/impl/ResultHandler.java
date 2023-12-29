@@ -110,6 +110,7 @@ public class ResultHandler extends UserRequestHandler {
 
         System.out.println("resultPoints " + resultPoints);
         System.out.println("colourPoints " + colourPoints);
+        System.out.println(textResult);
 
         telegramService.sendMessage(userRequest.getChatId(),textResult, replyKeyboardMarkup);
         telegramService.sendPhoto(userRequest.getChatId(),imageResult, replyKeyboardMarkup);
