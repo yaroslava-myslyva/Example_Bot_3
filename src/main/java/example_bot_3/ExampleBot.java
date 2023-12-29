@@ -12,7 +12,7 @@ import example_bot_3.service.UserSessionService;
 
 @Slf4j
 @Component
-public class VolunteerHelpBot extends TelegramLongPollingBot {
+public class ExampleBot extends TelegramLongPollingBot {
 
     @Value("${bot.token}")
     private String botToken;
@@ -23,7 +23,7 @@ public class VolunteerHelpBot extends TelegramLongPollingBot {
     private final Dispatcher dispatcher;
     private final UserSessionService userSessionService;
 
-    public VolunteerHelpBot(Dispatcher dispatcher, UserSessionService userSessionService) {
+    public ExampleBot(Dispatcher dispatcher, UserSessionService userSessionService) {
         this.dispatcher = dispatcher;
         this.userSessionService = userSessionService;
     }

@@ -4,9 +4,17 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.BotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.ParseMode;
+import org.telegram.telegrambots.meta.api.methods.PartialBotApiMethod;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboard;
 import example_bot_3.sender.VolunteerHelpBotSender;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+
+
+import java.io.File;
+import java.io.FileInputStream;
 
 /**
  * This example_bot_3.service allows to communicate with Telegram API
@@ -34,14 +42,31 @@ public class TelegramService {
                 .parseMode(ParseMode.HTML)
                 .replyMarkup(replyKeyboard)
                 .build();
-        execute(sendMessage);
-    }
-
-    private void execute(BotApiMethod botApiMethod) {
         try {
-            botSender.execute(botApiMethod);
+            botSender.execute(sendMessage);
         } catch (Exception e) {
             log.error("Exception: ", e);
         }
     }
+
+    public void sendPhoto(Long chatId, String pathName, ReplyKeyboard replyKeyboard) {
+        SendPhoto sendPhoto = SendPhoto.builder()
+                .chatId(chatId.toString())
+                .photo(new InputFile(new File(pathName)))
+                .replyMarkup(replyKeyboard)
+                .build();
+        try {
+            botSender.execute(sendPhoto);
+        } catch (Exception e) {
+            log.error("Exception: ", e);
+        }
+    }
+
+//    private void execute(BotApiMethod botApiMethod) {
+//        try {
+//            botSender.execute(botApiMethod);
+//        } catch (Exception e) {
+//            log.error("Exception: ", e);
+//        }
+//    }
 }

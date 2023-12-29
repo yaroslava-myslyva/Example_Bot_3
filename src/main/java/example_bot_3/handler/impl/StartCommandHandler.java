@@ -11,7 +11,7 @@ import example_bot_3.service.TelegramService;
 @Component
 public class StartCommandHandler extends UserRequestHandler {
 
-    private static String command = "/start";
+    private static final String command = "/start";
 
     private final TelegramService telegramService;
     private final KeyboardHelper keyboardHelper;
@@ -30,10 +30,8 @@ public class StartCommandHandler extends UserRequestHandler {
     public void handle(UserRequest request) {
         ReplyKeyboard replyKeyboard = keyboardHelper.buildMainMenu();
         telegramService.sendMessage(request.getChatId(),
-                "\uD83D\uDC4BПривіт! За допомогою цього чат-бота ви зможете зробити запит про допомогу!",
+                "\uD83D\uDC4BПривет!",
                 replyKeyboard);
-        telegramService.sendMessage(request.getChatId(),
-                "Обирайте з меню нижче ⤵️");
     }
 
     @Override

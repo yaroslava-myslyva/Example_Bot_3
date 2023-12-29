@@ -9,6 +9,6 @@ import lombok.Data;
 public class UserSession {
     private Long chatId;
     private ConversationState state;
-    private String city;
-    private String text;
+    private int points;
+    private int answerAboutColor;
 }

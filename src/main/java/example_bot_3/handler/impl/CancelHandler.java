@@ -34,8 +34,7 @@ public class CancelHandler extends UserRequestHandler {
     @Override
     public void handle(UserRequest userRequest) {
         ReplyKeyboard replyKeyboard = keyboardHelper.buildMainMenu();
-        telegramService.sendMessage(userRequest.getChatId(),
-                "Обирайте з меню нижче ⤵️", replyKeyboard);
+        telegramService.sendMessage(userRequest.getChatId(), "Отменено", replyKeyboard);
 
         UserSession userSession = userRequest.getUserSession();
         userSession.setState(ConversationState.CONVERSATION_STARTED);
