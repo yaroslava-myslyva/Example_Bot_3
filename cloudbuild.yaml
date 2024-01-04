@@ -2,6 +2,10 @@ steps:
   - name: maven:3-eclipse-temurin-17-alpine
     entrypoint: mvn
     args: ["test"]
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args: [ '-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy' ]
+    timeout: '1600s'
   - name: maven:3-eclipse-temurin-17-alpine
     entrypoint: mvn
     args: ["package", "-Dmaven.test.skip=true"]
