@@ -6,8 +6,5 @@ steps:
     entrypoint: 'bash'
     args: [ '-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy' ]
     timeout: '1600s'
-  - name: maven:3-eclipse-temurin-17-alpine
-    entrypoint: mvn
-    args: ["package", "-Dmaven.test.skip=true"]
 options:
   logging: CLOUD_LOGGING_ONLY
