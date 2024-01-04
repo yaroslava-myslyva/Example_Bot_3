@@ -1,9 +1,9 @@
 package example_bot_3.enums;
 
 public enum HumanAndPoint {
-    FIRST ("Хозяин", 1),
+    FIRST ("Друг", 1),
     SECOND ("Приятель", 2),
-    THIRD ("Друг", 3),
+    THIRD ("Хозяин", 3),
     FOURTH ("Раб", 4);
 
     public final String name;
