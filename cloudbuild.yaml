@@ -1,6 +1,16 @@
 steps:
-  - name: maven:3-eclipse-temurin-17-alpine
-    entrypoint: mvn
-    args: [ "package", "-Dmaven.test.skip=true" ]
+    # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/example-bot-409509/IMAGE', '.' ]
+      # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/example-bot-409509/IMAGE' ]
+      # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [ 'run', 'deploy', 'Cloud Run', '--image', 'gcr.io/example-bot-409509/IMAGE', '--region', 'global' ]
+
 options:
   logging: CLOUD_LOGGING_ONLY
+images:
+  - gcr.io/example-bot-409509/IMAGE
