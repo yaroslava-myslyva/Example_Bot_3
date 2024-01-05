@@ -2,9 +2,11 @@ steps:
   - name: maven:3-eclipse-temurin-17-alpine
     entrypoint: mvn
     args: ["test"]
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'bash'
-    args: [ '-c', 'gcloud config set app/cloud_build_timeout 1600 && gcloud app deploy' ]
-    timeout: '1600s'
+  - name: maven:3-eclipse-temurin-17-alpine
+    entrypoint: mvn
+    args: ["package", "-Dmaven.test.skip=true"]
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/hellospring", "--build-arg=JAR_FILE=target/hello-spring-1.0.0.jar", "."]
 options:
   logging: CLOUD_LOGGING_ONLY
+images: ["us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/hellospring"]
