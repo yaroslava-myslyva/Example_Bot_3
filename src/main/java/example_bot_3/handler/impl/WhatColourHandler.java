@@ -20,12 +20,15 @@ public class WhatColourHandler extends UserRequestHandler {
     private final TelegramService telegramService;
     private final KeyboardHelper keyboardHelper;
     private final UserSessionService userSessionService;
-    private final Map<String, Integer> foodPointMap = Map.of(
-            FoodAndPoint.FIRST.name, FoodAndPoint.FIRST.point,
-            FoodAndPoint.SECOND.name, FoodAndPoint.SECOND.point,
-            FoodAndPoint.THIRD.name, FoodAndPoint.THIRD.point,
-            FoodAndPoint.FOURTH.name, FoodAndPoint.FOURTH.point
-    );
+    private final Map<String, Integer> foodPointMap;
+
+    {
+        foodPointMap = new HashMap<>();
+        foodPointMap.put(FoodAndPoint.FIRST.name, FoodAndPoint.FIRST.point);
+        foodPointMap.put(FoodAndPoint.SECOND.name, FoodAndPoint.SECOND.point);
+        foodPointMap.put(FoodAndPoint.THIRD.name, FoodAndPoint.THIRD.point);
+        foodPointMap.put(FoodAndPoint.FOURTH.name, FoodAndPoint.FOURTH.point);
+    }
 
     public WhatColourHandler(TelegramService telegramService, KeyboardHelper keyboardHelper, UserSessionService userSessionService) {
         this.telegramService = telegramService;

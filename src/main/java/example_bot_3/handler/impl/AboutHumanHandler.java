@@ -13,6 +13,7 @@ import lombok.extern.java.Log;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 
+import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -21,12 +22,15 @@ public class AboutHumanHandler extends UserRequestHandler {
     private final TelegramService telegramService;
     private final KeyboardHelper keyboardHelper;
     private final UserSessionService userSessionService;
-    private final Map<String, Integer> colourPointMap = Map.of(
-            ColourAndPoint.FIRST.name, ColourAndPoint.FIRST.point,
-            ColourAndPoint.SECOND.name, ColourAndPoint.SECOND.point,
-            ColourAndPoint.THIRD.name, ColourAndPoint.THIRD.point,
-            ColourAndPoint.FOURTH.name, ColourAndPoint.FOURTH.point
-    );
+    private final Map<String, Integer> colourPointMap;
+
+    {
+        colourPointMap = new HashMap<>();
+        colourPointMap.put(ColourAndPoint.FIRST.name, ColourAndPoint.FIRST.point);
+        colourPointMap.put(ColourAndPoint.SECOND.name, ColourAndPoint.SECOND.point);
+        colourPointMap.put(ColourAndPoint.THIRD.name, ColourAndPoint.THIRD.point);
+        colourPointMap.put(ColourAndPoint.FOURTH.name, ColourAndPoint.FOURTH.point);
+    }
 
     public AboutHumanHandler(TelegramService telegramService, KeyboardHelper keyboardHelper, UserSessionService userSessionService) {
         this.telegramService = telegramService;

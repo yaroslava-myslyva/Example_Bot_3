@@ -7,36 +7,46 @@
     <groupId>org.example</groupId>
     <artifactId>Example_Bot_3</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+
+        <telegrambots.version>6.5.0</telegrambots.version>
+        <slf4j.version>1.7.30</slf4j.version>
+        <commons-logging.version>1.2</commons-logging.version>
+        <lombok.version>1.18.26</lombok.version>
+        <spring-boot.version>2.5.9</spring-boot.version>
+    </properties>
+
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.0</version>
                 <configuration>
-                    <source>14</source>
-                    <target>14</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>2.4.4</version>
+                <configuration>
+                    <deploy.projectId>example-bot-409509</deploy.projectId>
+                    <deploy.version>GCLOUD_CONFIG</deploy.version>
                 </configuration>
             </plugin>
         </plugins>
     </build>
 
     <parent>
-        <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.5.9</version>
     </parent>
-
-    <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-
-        <telegrambots.version>5.7.1</telegrambots.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <slf4j.version>1.7.30</slf4j.version>
-        <commons-logging.version>1.2</commons-logging.version>
-        <lombok.version>1.18.20</lombok.version>
-        <spring-boot.version>2.5.9</spring-boot.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -57,7 +67,7 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!-- This starter will allow to auto-register your bot        -->
+        <!-- This starter will allow auto-registering your bot        -->
         <dependency>
             <groupId>org.telegram</groupId>
             <artifactId>telegrambots-spring-boot-starter</artifactId>
@@ -67,6 +77,3 @@
     </dependencies>
 
 </project>
-
-
-

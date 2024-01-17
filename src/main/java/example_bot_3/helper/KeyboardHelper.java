@@ -8,6 +8,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMar
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static example_bot_3.constant.Constants.BTN_CANCEL;
@@ -24,8 +25,10 @@ public class KeyboardHelper {
         KeyboardRow keyboardRow = new KeyboardRow();
         keyboardRow.add("Узнать");
 
+        List<KeyboardRow> keyboard = new java.util.ArrayList<>();
+        keyboard.add(keyboardRow);
         return ReplyKeyboardMarkup.builder()
-                .keyboard(List.of(keyboardRow))
+                .keyboard(keyboard)
                 .selective(true)
                 .resizeKeyboard(true)
                 .oneTimeKeyboard(false)
@@ -33,20 +36,26 @@ public class KeyboardHelper {
     }
 
     public ReplyKeyboardMarkup buildFoodMenu() {
-        List<KeyboardButton> buttons1 = List.of(
-                new KeyboardButton(FoodAndPoint.FIRST.name),
-                new KeyboardButton(FoodAndPoint.SECOND.name));
+        List<KeyboardButton> buttons1 = new ArrayList<>();
+        buttons1.add(new KeyboardButton(FoodAndPoint.FIRST.name));
+        buttons1.add(new KeyboardButton(FoodAndPoint.SECOND.name));
         KeyboardRow row1 = new KeyboardRow(buttons1);
 
-        List<KeyboardButton> buttons2 = List.of(
-                new KeyboardButton(FoodAndPoint.THIRD.name),
-                new KeyboardButton(FoodAndPoint.FOURTH.name));
+        List<KeyboardButton> buttons2 = new ArrayList<>();
+        buttons2.add(new KeyboardButton(FoodAndPoint.THIRD.name));
+        buttons2.add(new KeyboardButton(FoodAndPoint.FOURTH.name));
         KeyboardRow row2 = new KeyboardRow(buttons2);
 
-        KeyboardRow row3 = new KeyboardRow(List.of(new KeyboardButton(BTN_CANCEL)));
+        List<KeyboardButton> keyboardButtons = new ArrayList<>();
+        keyboardButtons.add(new KeyboardButton(BTN_CANCEL));
+        KeyboardRow row3 = new KeyboardRow(keyboardButtons);
 
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        keyboard.add(row1);
+        keyboard.add(row2);
+        keyboard.add(row3);
         return ReplyKeyboardMarkup.builder()
-                .keyboard(List.of(row1, row2, row3))
+                .keyboard(keyboard)
                 .selective(true)
                 .resizeKeyboard(true)
                 .oneTimeKeyboard(false)
@@ -54,20 +63,26 @@ public class KeyboardHelper {
     }
 
     public ReplyKeyboardMarkup buildColourMenu() {
-        List<KeyboardButton> buttons1 = List.of(
-                new KeyboardButton(ColourAndPoint.FIRST.name),
-                new KeyboardButton(ColourAndPoint.SECOND.name));
+        List<KeyboardButton> buttons1 = new ArrayList<>();
+        buttons1.add(new KeyboardButton(ColourAndPoint.FIRST.name));
+        buttons1.add(new KeyboardButton(ColourAndPoint.SECOND.name));
         KeyboardRow row1 = new KeyboardRow(buttons1);
 
-        List<KeyboardButton> buttons2 = List.of(
-                new KeyboardButton(ColourAndPoint.THIRD.name),
-                new KeyboardButton(ColourAndPoint.FOURTH.name));
+        List<KeyboardButton> buttons2 = new ArrayList<>();
+        buttons2.add(new KeyboardButton(ColourAndPoint.THIRD.name));
+        buttons2.add(new KeyboardButton(ColourAndPoint.FOURTH.name));
         KeyboardRow row2 = new KeyboardRow(buttons2);
 
-        KeyboardRow row3 = new KeyboardRow(List.of(new KeyboardButton(BTN_CANCEL)));
+        List<KeyboardButton> keyboardButtons = new ArrayList<>();
+        keyboardButtons.add(new KeyboardButton(BTN_CANCEL));
+        KeyboardRow row3 = new KeyboardRow(keyboardButtons);
 
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        keyboard.add(row1);
+        keyboard.add(row2);
+        keyboard.add(row3);
         return ReplyKeyboardMarkup.builder()
-                .keyboard(List.of(row1, row2, row3))
+                .keyboard(keyboard)
                 .selective(true)
                 .resizeKeyboard(true)
                 .oneTimeKeyboard(false)
@@ -75,20 +90,26 @@ public class KeyboardHelper {
     }
 
     public ReplyKeyboardMarkup buildHumanMenu() {
-        List<KeyboardButton> buttons1 = List.of(
-                new KeyboardButton(HumanAndPoint.FIRST.name),
-                new KeyboardButton(HumanAndPoint.SECOND.name));
+        List<KeyboardButton> buttons1 = new ArrayList<>();
+        buttons1.add(new KeyboardButton(HumanAndPoint.FIRST.name));
+        buttons1.add(new KeyboardButton(HumanAndPoint.SECOND.name));
         KeyboardRow row1 = new KeyboardRow(buttons1);
 
-        List<KeyboardButton> buttons2 = List.of(
-                new KeyboardButton(HumanAndPoint.THIRD.name),
-                new KeyboardButton(HumanAndPoint.FOURTH.name));
+        List<KeyboardButton> buttons2 = new ArrayList<>();
+        buttons2.add(new KeyboardButton(HumanAndPoint.THIRD.name));
+        buttons2.add(new KeyboardButton(HumanAndPoint.FOURTH.name));
         KeyboardRow row2 = new KeyboardRow(buttons2);
 
-        KeyboardRow row3 = new KeyboardRow(List.of(new KeyboardButton(BTN_CANCEL)));
+        List<KeyboardButton> keyboardButtons = new ArrayList<>();
+        keyboardButtons.add(new KeyboardButton(BTN_CANCEL));
+        KeyboardRow row3 = new KeyboardRow(keyboardButtons);
 
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        keyboard.add(row1);
+        keyboard.add(row2);
+        keyboard.add(row3);
         return ReplyKeyboardMarkup.builder()
-                .keyboard(List.of(row1, row2, row3))
+                .keyboard(keyboard)
                 .selective(true)
                 .resizeKeyboard(true)
                 .oneTimeKeyboard(false)
@@ -99,8 +120,10 @@ public class KeyboardHelper {
         KeyboardRow keyboardRow = new KeyboardRow();
         keyboardRow.add(BTN_CANCEL);
 
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        keyboard.add(keyboardRow);
         return ReplyKeyboardMarkup.builder()
-                .keyboard(List.of(keyboardRow))
+                .keyboard(keyboard)
                 .selective(true)
                 .resizeKeyboard(true)
                 .oneTimeKeyboard(false)
